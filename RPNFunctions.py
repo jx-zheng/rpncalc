@@ -1,9 +1,3 @@
-
-# coding: utf-8
-
-# In[4]:
-
-
 # RPNFunctions.py
 # Written by Jia Xi Zheng
 # September 2018
