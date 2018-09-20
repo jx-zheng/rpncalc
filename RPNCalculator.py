@@ -1,9 +1,3 @@
-
-# coding: utf-8
-
-# In[ ]:
-
-
 # RPNCalculator.py
 # Written by Jia Xi Zheng
 # September 2018
