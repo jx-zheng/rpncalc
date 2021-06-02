@@ -53,7 +53,7 @@ def change_stack_size():
         max_size = input("Please enter a value for the stack size. ")
         try:
             max_size = int(max_size)
-        except:
+        except (TypeError, ValueError):
             print("Invalid stack size: please enter a positive integer greater than 1.")
             max_size = 4
         else: # If no exception was thrown when casting to integer, this executes

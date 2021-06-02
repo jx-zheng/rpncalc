@@ -54,7 +54,7 @@ while user_input.upper() != "QUIT":
         rpn_functions.print_top()
     elif user_input == "-": # Difference of last two numbers in the stack
         rpn_functions.subtract()
-        rpn_functions.printTop()
+        rpn_functions.print_top()
     elif user_input == "*": # Product of last two numbers in the stack
         rpn_functions.multiply()
         rpn_functions.print_top()
