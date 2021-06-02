@@ -1,5 +1,5 @@
 # RPNFunctions.py
-# Written by Jia Xi Zheng
+# Written by Kevin Zheng
 # September 2018
 # Description: Contains the essential functions for RPNCalculator, including math operations and stack operations.
 
@@ -102,7 +102,7 @@ def NthRoot():
 def ShowInfo():
     print("Want to learn to use RPN (Reverse Polish Notation) calculators?",
          "Visit https://www.lehigh.edu/~sgb2/rpnTutor.html (teaches you in the context of the HP-12C calculator).",
-         "This program was written by Jia Xi Zheng in 2018.", sep = "\n")
+         "This program was written by Kevin Zheng in 2018.", sep = "\n")
     
 def Add():
     value1 = Stack[(len(Stack) - 1)]
