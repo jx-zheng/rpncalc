@@ -7,11 +7,11 @@ import math
 from os import system, name
 
 stack = [0, 0, 0, 0]
-max_size = 4 # Define the maximum size of the default stack
+max_size = 4 # Default max size
 
 def show_help():
     print("")
-    print("- Functions of RPNCalculator - ".center(80, " ")) # Centers the title using whitespace
+    print("- Functions of RPNCalculator - ".center(80, " "))
     print("\n'help': Explains all functions and their associated commands",
           "'quit': Exit RPNCalculator",
           "'clear': Clear the screen",
@@ -30,20 +30,20 @@ def show_help():
 
 def push(x):
     shift_up()
-    stack[len(stack) - 1] = x # Set the last value in the stack to the new value input by the user
+    stack[len(stack) - 1] = x
 
 def pop():
-    popholder = len(stack) - 1 # Temporarily hold the last value in the stack
-    for popvalue in reversed(stack): # Iterate through the stack backwards
+    popholder = len(stack) - 1
+    for popvalue in reversed(stack):
         stack[popholder] = stack[popholder - 1]
         popholder -= 1
-        if popholder == 0: # This prevents trying to read the -1th index of the stack
+        if popholder == 0:
             stack[0] = 0
             break
 
 def show_stack():
     print("=====")
-    print(*stack, sep="\n") # Prints each value of the stack on a new line
+    print(*stack, sep="\n")
     print("=====")
 
 def change_stack_size():
@@ -56,24 +56,24 @@ def change_stack_size():
         except (TypeError, ValueError):
             print("Invalid stack size: please enter a positive integer greater than 1.")
             max_size = 4
-        else: # If no exception was thrown when casting to integer, this executes
+        else:
             if max_size < 2:
                 print("Invalid stack size: please enter a positive integer greater than 1.")
             else:
                 accept_input = 1
-                stack.clear() # Reset all stack values to 0
+                stack.clear()
                 for _ in range(0, max_size):
-                    stack.append(0) # Append new values to the list to change the size of the stack
+                    stack.append(0)
                     if len(stack) == max_size:
                         print("Stack size successfully changed to {0} registers.".format(max_size))
                         break
 
-def swap(): # Swap the values of the top two registers in the stack
-    swapholder = stack[(len(stack)-2)]
+def swap():
+    temp = stack[(len(stack)-2)]
     stack[(len(stack)-2)] = stack[(len(stack)-1)]
-    stack[(len(stack)-1)] = swapholder
+    stack[(len(stack)-1)] = temp
 
-def clear_stack(): # Set all registers in the stack equal to zero
+def clear_stack():
     for cleanup in range(0, max_size):
         stack[cleanup] = 0
     print("Stack cleared.")
@@ -102,7 +102,7 @@ def nth_root():
 def show_info():
     print("Want to learn to use RPN (Reverse Polish Notation) calculators?",
           "Visit https://www.lehigh.edu/~sgb2/rpnTutor.html (teaches you the HP-12C calculator).",
-          "This program was written by Kevin Zheng in 2018.", sep="\n")
+          "This program was written by Kevin Zheng.", sep="\n")
 
 def add():
     value1 = stack[(len(stack) - 1)]
@@ -146,11 +146,11 @@ def shift_up(): # Pops from the bottom of the stack
             stack[len(stack) - 1] = 0
             break
 
-def print_top(): # Prints the top/last value in the stack
+def print_top():
     print(stack[len(stack) - 1])
 
-def clear(): # Clears console screen
+def clear():
     if name == 'nt': # Windows
         _ = system('cls')
-    else: # Other operating sysems
+    else:
         _ = system('clear')

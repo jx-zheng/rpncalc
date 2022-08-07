@@ -3,25 +3,21 @@
 # September 2018
 # Description: CLI driver for rpncalc
 
-import time
 import rpn_functions
 
-user_input = "" # Initialize the user input string
+print("Welcome to RPNCalculator.".center(80, " ")) 
+print("Enter 'help' to access a list of commands.\n".center(80, " "))
 
-print("Welcome to RPNCalculator.".center(80, " ")) # Centers the title with whitespace
+user_input = ""
 
-time.sleep(1.5) # Pause for dramatic effect
-
-print("For help, please enter 'help' at any time.".center(80, " "))
-print("Default stack size is 4. To change the size of the stack, enter 'cs'.".center(80, " "))
-
-while user_input.upper() != "QUIT":
-    user_input = input() # Accept user input from the console
+while True:
+    print("rpnc> ", end='')
+    user_input = input().lower() # Accept user input from the console
     if user_input == "help":
         rpn_functions.show_help()
-    elif user_input.upper() == "QUIT": # Causes the exit message to be printed
-        pass
-    elif user_input == "": # Pushing 0 to stack (blank or 0 input)
+    elif user_input == "exit": 
+        break
+    elif user_input == "":
         rpn_functions.push(0)
     elif user_input == "ss": # Print the value of all registers in the stack
         rpn_functions.show_stack()
@@ -71,5 +67,3 @@ while user_input.upper() != "QUIT":
             rpn_functions.push(float(user_input)) # Try to evaluate it as push
         except (TypeError, ValueError):
             print("Invalid command or value: enter 'help' for command help.")
-
-print("Thank you for using RPNCalculator.")
