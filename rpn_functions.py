@@ -35,7 +35,6 @@ def push(x):
 def pop():
     for i in range(len(stack) - 1, 0, -1):
         stack[i] = stack[i - 1]
-        i -= 1
     stack[0] = 0
 
 def show_stack():
@@ -134,14 +133,10 @@ def reciprocal():
     except ZeroDivisionError:
         print("Error (Dividing by zero)")
 
-def shift_up(): # Pops from the bottom of the stack
-    stackcounter = 0
-    for _ in stack:
-        stack[stackcounter] = stack[stackcounter + 1]
-        stackcounter += 1
-        if stackcounter == (len(stack) - 1):
-            stack[len(stack) - 1] = 0
-            break
+def shift_up():
+    for i in range(len(stack) - 1):
+        stack[i] = stack[i + 1]
+    stack[len(stack) - 1] = 0
 
 def print_top():
     print(stack[len(stack) - 1])
