@@ -1,7 +1,7 @@
 # RPNFunctions.py
 # Written by Kevin Zheng
 # September 2018
-# Description: Contains the essential functions for RPNCalculator
+# Description: Contains the math implemntations of RPNCalculator
 
 import math
 from os import system, name
@@ -33,13 +33,10 @@ def push(x):
     stack[len(stack) - 1] = x
 
 def pop():
-    popholder = len(stack) - 1
-    for popvalue in reversed(stack):
-        stack[popholder] = stack[popholder - 1]
-        popholder -= 1
-        if popholder == 0:
-            stack[0] = 0
-            break
+    for i in range(len(stack) - 1, 0, -1):
+        stack[i] = stack[i - 1]
+        i -= 1
+    stack[0] = 0
 
 def show_stack():
     print("=====")
@@ -65,7 +62,7 @@ def change_stack_size():
                 for _ in range(0, max_size):
                     stack.append(0)
                     if len(stack) == max_size:
-                        print("Stack size successfully changed to {0} registers.".format(max_size))
+                        print(f"Stack size successfully changed to {max_size} registers.")
                         break
 
 def swap():
