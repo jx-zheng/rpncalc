@@ -4,7 +4,6 @@
 # Description: Contains the math implemntations of RPNCalculator
 
 import math
-from os import system, name
 
 stack = [0, 0, 0, 0]
 max_size = 4 # Default max size
@@ -70,9 +69,8 @@ def swap():
     stack[(len(stack)-1)] = temp
 
 def clear_stack():
-    for cleanup in range(0, max_size):
-        stack[cleanup] = 0
-    print("Stack cleared.")
+    for i in range(0, max_size):
+        stack[i] = 0
 
 def square():
     stack[(len(stack) - 1)] = math.pow(stack[(len(stack) - 1)], 2)
@@ -84,10 +82,8 @@ def power():
     stack[(len(stack) - 1)] = math.pow(base, exponent)
 
 def square_root():
-    try:
-        stack[(len(stack) - 1)] = math.sqrt(stack[(len(stack) - 1)])
-    except ValueError:
-        print("Domain error (square root of negative number)")
+    result = math.sqrt(stack[(len(stack) - 1)]) # throws ValueError
+    stack[(len(stack) - 1)] = result
 
 def nth_root():
     index = stack[(len(stack) - 1)]
@@ -119,30 +115,20 @@ def multiply():
     stack[(len(stack) - 1)] = value1 * value2
 
 def divide():
-    try:
-        value1 = stack[(len(stack) - 1)]
-        value2 = stack[(len(stack) - 2)]
-        pop()
-        stack[(len(stack) - 1)] = value2 / value1
-    except ZeroDivisionError:
-        print("Error (Dividing by zero)")
+    numerator = stack[(len(stack) - 1)]
+    denominator = stack[(len(stack) - 2)]
+    result = numerator / denominator # raises ZeroDivisionError
+    pop()
+    stack[(len(stack) - 1)] = result
 
 def reciprocal():
-    try:
-        stack[(len(stack) - 1)] = 1 / stack[(len(stack) - 1)]
-    except ZeroDivisionError:
-        print("Error (Dividing by zero)")
+    result = 1 / stack[(len(stack) - 1)] # raises ZeroDivisionError
+    stack[(len(stack) - 1)] = result
 
 def shift_up():
     for i in range(len(stack) - 1):
         stack[i] = stack[i + 1]
     stack[len(stack) - 1] = 0
 
-def print_top():
-    print(stack[len(stack) - 1])
-
-def clear():
-    if name == 'nt': # Windows
-        _ = system('cls')
-    else:
-        _ = system('clear')
+def peek():
+    return stack[len(stack) - 1]
