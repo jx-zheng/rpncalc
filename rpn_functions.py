@@ -5,7 +5,7 @@
 
 import math
 
-stack = [0, 0, 0, 0]
+stack = [0.0, 0.0, 0.0, 0.0]
 
 def push(x):
     shift_up()
@@ -14,7 +14,7 @@ def push(x):
 def pop():
     for i in range(len(stack) - 1, 0, -1):
         stack[i] = stack[i - 1]
-    stack[0] = 0
+    stack[0] = 0.0
 
 def get_stack():
     return stack
@@ -22,7 +22,7 @@ def get_stack():
 def resize_stack(new_size):
     stack.clear()
     for _ in range(0, new_size):
-        stack.append(0)
+        stack.append(0.0)
 
 def swap():
     temp = stack[(len(stack)-2)]
@@ -31,7 +31,7 @@ def swap():
 
 def zero_stack():
     for i in range(0, len(stack)):
-        stack[i] = 0
+        stack[i] = 0.0
 
 def square():
     stack[(len(stack) - 1)] = math.pow(stack[(len(stack) - 1)], 2)
@@ -85,7 +85,7 @@ def reciprocal():
 def shift_up():
     for i in range(len(stack) - 1):
         stack[i] = stack[i + 1]
-    stack[len(stack) - 1] = 0
+    stack[len(stack) - 1] = 0.0
 
 def peek():
     return stack[len(stack) - 1]
