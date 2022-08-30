@@ -68,7 +68,7 @@ while True:
         break
 
     elif user_input == "":
-        rpn_functions.push(0)
+        rpn_functions.push(0.0)
 
     elif user_input == "ss": # Print value of all registers in stack
         show_stack()
